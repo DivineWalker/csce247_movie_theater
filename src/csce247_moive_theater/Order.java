@@ -44,6 +44,14 @@ public class Order {
     this.orderNumber = orderNumber;
   }
 
+  public String getOrderNumber() {
+    return this.orderNumber;
+  }
+
+  public String getSeatNumber() {
+    return this.seatNumber;
+  }
+
   /**
    * Generates a new order number
    * 
@@ -54,4 +62,5 @@ public class Order {
     Date now = new Date();
     return String.valueOf(now.getTime()) + seatNumber;
   }
+
 }
