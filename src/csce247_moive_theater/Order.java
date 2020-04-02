@@ -52,6 +52,10 @@ public class Order {
     return this.seatNumber;
   }
 
+  public String getEventName() {
+    return this.showtime.event.name;
+  }
+
   @Override
   public String toString() {
     return "Order #: " + this.orderNumber + "            " + "$" + this.amountPaid;
