@@ -52,6 +52,11 @@ public class Order {
     return this.seatNumber;
   }
 
+  @Override
+  public String toString() {
+    return "Order #: " + this.orderNumber + "            " + "$" + this.amountPaid;
+  }
+
   /**
    * Generates a new order number
    * 
