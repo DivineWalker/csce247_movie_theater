@@ -56,6 +56,10 @@ public class Order {
     return this.showtime.event.name;
   }
 
+  public String getAuditoriumNumber() {
+    return this.showtime.auditoriumNumber;
+  }
+
   @Override
   public String toString() {
     return "Order #: " + this.orderNumber + "            " + "$" + this.amountPaid;
