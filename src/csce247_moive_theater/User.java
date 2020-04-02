@@ -1,7 +1,6 @@
 package csce247_moive_theater;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class User {
   protected String firstName;
@@ -29,37 +28,12 @@ public class User {
   }
 
   /**
-   * Walks the user the purchase process to select ticket types and seats for the given Showtime
+   * Purchases the users tickets, adds them to their order history, then displays the ticket
    * 
    * @param showtime Showtime the user would like to purchase tickets for
    */
-  public void purchaseTicket(Showtime showtime) {
-    int adultTicketsPurchased = 0;
-    int childTicketsPurchased = 0;
-    int handicapTicketsPurchased = 0;
-    Scanner input = new Scanner(System.in);
-
-    System.out.println("How many adult tickets would you like to purchase?");
-    adultTicketsPurchased = input.nextInt();
-
-    System.out.println("How many child tickets would you like to purchase?");
-    childTicketsPurchased = input.nextInt();
-
-    System.out.println("How may handicap tickets would you like to purchase?");
-    handicapTicketsPurchased = input.nextInt();
-
-    int totalTickets = adultTicketsPurchased + childTicketsPurchased + handicapTicketsPurchased;
-    String selectedSeats;
-    for (int i = totalTickets; i > 0; --i) {
-      System.out.println("Please select your seat");
-      // TODO Select the seat
-    }
-
-    double totalPurchasePrice = 0;
-    // TODO Get the total purchase price
-    System.out.println("Your total is $" + totalPurchasePrice + ". Processing your payment.");
-
-    Order newOrder = new Order(showtime, totalPurchasePrice, selectedSeats);
+  public void purchaseTicket(Showtime showtime, String seatNumbers, double orderTotal) {
+    Order newOrder = new Order(showtime, orderTotal, seatNumbers);
     orderHistory.add(newOrder);
 
     System.out
