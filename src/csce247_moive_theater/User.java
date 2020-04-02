@@ -63,8 +63,8 @@ public class User {
   public void displayTicket(String orderNumber) {
     for (int i = 0; i < orderHistory.size(); ++i) {
       if (orderHistory.get(i).getOrderNumber().equals(orderNumber)) {
-        System.out.println("****** TICKET TO "/*TODO Put Showname here*/);
-        System.out.print("AUDITORIUM: " //Print Audiortium);
+        System.out.println("****** " + orderHistory.get(i).getEventName() + " ******");
+        System.out.print("AUDITORIUM: " + orderHistory.get(i).getAuditoriumNumber());
         System.out.print("SEAT NUMBER: " + orderHistory.get(i).getSeatNumber());
       }
     }
