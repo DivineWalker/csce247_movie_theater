@@ -60,14 +60,22 @@ public class User {
         .println("Error: The order could not be found. Check your order number and try again");
   }
 
+  /**
+   * Prints out the ticket with the specified order number
+   * 
+   * @param orderNumber Order number of the ticket to print
+   */
   public void displayTicket(String orderNumber) {
     for (int i = 0; i < orderHistory.size(); ++i) {
       if (orderHistory.get(i).getOrderNumber().equals(orderNumber)) {
         System.out.println("****** " + orderHistory.get(i).getEventName() + " ******");
         System.out.print("AUDITORIUM: " + orderHistory.get(i).getAuditoriumNumber());
         System.out.print("SEAT NUMBER: " + orderHistory.get(i).getSeatNumber());
+        return;
       }
     }
+    System.out
+        .println("Error: The ticket could not be found. Check your order number and try again");
   }
 
   /**
