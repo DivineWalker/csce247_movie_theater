@@ -30,8 +30,4 @@ public class RegisteredUser extends User {
     this.password = password;
     this.isMilitary = isMilitary;
   }
-
-  public void addReview(String review, String evenName) {
-
-  }
 }
