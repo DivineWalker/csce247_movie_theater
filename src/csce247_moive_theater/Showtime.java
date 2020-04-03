@@ -18,7 +18,7 @@ public class Showtime {
      */
     public Showtime(Venue venue, Event event, String auditoriumNumber) {
         this.venue = venue;
-        // this.event = event;
+        this.event = event;
         this.auditoriumNumber = auditoriumNumber;
         this.availableSeats = venue.getAuditorium(auditoriumNumber).getSeatingMap();
     }
@@ -56,5 +56,21 @@ public class Showtime {
             availableSeats[i][j] = " ";
         else
             System.out.println("The seat in row " + j + ", column " + i + " is already taken. Choose again.");
+    }
+
+    /**
+     * 
+     * @return event
+     */
+    public Event getEvent() {
+        return this.event;
+    }
+
+    /**
+     * 
+     * @return auditorium number
+     */
+    public String getAuditoriumNumber() {
+        return this.auditoriumNumber;
     }
 }
