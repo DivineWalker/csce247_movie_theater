@@ -15,5 +15,7 @@ public abstract class Event {
 	
 	public Event(String name) {
 		this.name = name;
+		
+		reviews = new ArrayList<>();
 	}
 }
