@@ -95,4 +95,28 @@ public class User {
   private void applyDiscounts() {
 
   }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public ArrayList<Order> getOrderHistory() {
+    return orderHistory;
+  }
 }
