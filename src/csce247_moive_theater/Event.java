@@ -13,6 +13,10 @@ public abstract class Event {
 	protected String genre;
 	protected String description;
 	
+	/**
+	 * Creates a new Event
+	 * @param name - name of the event - 
+	 */
 	public Event(String name) {
 		this.name = name;
 		
