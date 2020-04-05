@@ -53,11 +53,11 @@ public class Order {
   }
 
   public String getEventName() {
-    return this.showtime.event.name;
+    return showtime.getEvent().getName();
   }
 
   public String getAuditoriumNumber() {
-    return this.showtime.auditoriumNumber;
+    return showtime.getAuditoriumNumber();
   }
 
   @Override
