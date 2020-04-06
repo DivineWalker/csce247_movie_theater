@@ -25,7 +25,7 @@ public class Play extends Event {
   }
 
   /**
-   * Create a new play listing
+   * Create an existing play from JSON data
    * 
    * @param name - name of event
    * @param runTime - run time of event
