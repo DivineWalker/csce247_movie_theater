@@ -9,10 +9,14 @@ package csce247_moive_theater;
 public class Play extends Event {
 	
 	/**
-	 * Creates a new Play listing
-	 * @param name - Name to be used by the super to name the event
+	 * Create a new play listing
+	 * @param name - name of event
+	 * @param runTime - run time of event
+	 * @param stars - actor/performing staring the event
+	 * @param genre - genre of the event
+	 * @param description -  short description of the event
 	 */
-	public Play(String name) {
-		super(name);
+	public Play(String name, int runTime, String stars, String genre, String description) {
+		super(name, runTime, stars, genre, description);
 	}
 }
