@@ -21,8 +21,9 @@ public class Movie extends Event {
    * @param mpaaRating - mpaaRating for the Movie
    */
   public Movie(String name, int runTime, String stars, String genre, String description,
-      String mpaaRating) {
+      String type, String mpaaRating) {
     super(name, runTime, stars, genre, description);
+    this.type = "movie";
     this.mpaaRating = mpaaRating;
   }
 
@@ -40,6 +41,7 @@ public class Movie extends Event {
   public Movie(String name, int runTime, String stars, String genre, String description,
       ArrayList<String> reviews, String mpaaRating) {
     super(name, runTime, stars, genre, description, reviews);
+    this.type = "movie";
     this.mpaaRating = mpaaRating;
   }
 

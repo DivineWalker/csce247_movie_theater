@@ -14,6 +14,7 @@ public abstract class Event {
   protected String stars;
   protected String genre;
   protected String description;
+  protected String type;
 
 
   /**
