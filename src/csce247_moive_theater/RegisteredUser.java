@@ -31,4 +31,29 @@ public class RegisteredUser extends User {
     this.isMilitary = isMilitary;
     this.type = "registered";
   }
+
+
+  public String getDateOfBirth() {
+    return dateOfBirth;
+  }
+
+
+  public String getAddress() {
+    return address;
+  }
+
+
+  public String getUsername() {
+    return username;
+  }
+
+
+  public String getPassword() {
+    return password;
+  }
+
+
+  public boolean isMilitary() {
+    return isMilitary;
+  }
 }
