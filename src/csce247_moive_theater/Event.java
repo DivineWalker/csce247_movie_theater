@@ -15,11 +15,14 @@ public abstract class Event {
   protected String genre;
   protected String description;
 
+
   /**
-   * Creates a new Event
    * 
-   * @param name - name of the event -
-   * 
+   * @param name - name of the event
+   * @param runTime - run time of the event
+   * @param stars - actor/performer staring the event
+   * @param genre - genre of the event
+   * @param description - short description of the event
    */
   public Event(String name, int runTime, String stars, String genre, String description) {
     this.name = name;
@@ -27,10 +30,30 @@ public abstract class Event {
     this.stars = stars;
     this.genre = genre;
     this.description = description;
-    this.reviews = new ArrayList<>();  
+    this.reviews = new ArrayList<>();
   }
 
   public String getName() {
     return this.name;
+  }
+
+  public ArrayList<String> getReviews() {
+    return reviews;
+  }
+
+  public int getRunTime() {
+    return runTime;
+  }
+
+  public String getStars() {
+    return stars;
+  }
+
+  public String getGenre() {
+    return genre;
+  }
+
+  public String getDescription() {
+    return description;
   }
 }
