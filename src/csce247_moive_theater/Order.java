@@ -52,6 +52,14 @@ public class Order {
     return this.seatNumber;
   }
 
+  public double getAmountPaid() {
+    return this.amountPaid;
+  }
+
+  public Showtime getShowtime() {
+    return this.showtime;
+  }
+
   public String getEventName() {
     return showtime.getEvent().getName();
   }
