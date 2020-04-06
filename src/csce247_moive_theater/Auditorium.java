@@ -11,8 +11,8 @@ public class Auditorium {
 
   /**
    * 
-   * @param auditoriumNumber
-   * @param seatingMap
+   * @param auditoriumNumber name of the auditorium
+   * @param seatingMap       seating map of auditorium
    */
   public Auditorium(String auditoriumNumber, String[][] seatingMap) {
     this.auditoriumNumber = auditoriumNumber;
@@ -20,15 +20,11 @@ public class Auditorium {
 
   }
 
+  //Changed method so that it will fill the seatingMap with As instead of print a blank seating map
   public void getSeatingLayout() {
-    for (int i = 0; i < seatingMap.length; i++) {
-      System.out.println("| ");
-      for (int j = 0; j < seatingMap[i].length; j++) {
-        System.out.print("  |");
-      }
-      System.out.println();
-    }
-    System.out.println();
+    for (int i = 0; i < seatingMap.length; i++)
+      for (int j = 0; j < seatingMap[i].length; j++)
+        seatingMap[i][j] = "A";
   }
 
   /**

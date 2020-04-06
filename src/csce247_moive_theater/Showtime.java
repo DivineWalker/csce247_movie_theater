@@ -14,8 +14,8 @@ public class Showtime {
 
   /**
    * 
-   * @param venue venue that the showtime is being added to
-   * @param event what event is happening
+   * @param venue            venue that the showtime is being added to
+   * @param event            what event is happening
    * @param auditoriumNumber which auditorium it will be playing in
    */
   public Showtime(Venue venue, Event event, String auditoriumNumber) {
@@ -25,24 +25,43 @@ public class Showtime {
     this.availableSeats = venue.getAuditorium(auditoriumNumber).getSeatingMap();
   }
 
+  public Venue getVenue() {
+    return this.venue;
+  }
+
   /**
    * 
-   * @return available seats
+   * @return event
    */
+  public Event getEvent() {
+    return this.event;
+  }
+
   public String[][] getAvailableSeats() {
     return availableSeats;
   }
 
+  public String getTimeOfShow() {
+    return this.timeOfShow;
+  }
+
+  /**
+   * 
+   * @return auditorium number
+   */
+  public String getAuditoriumNumber() {
+    return this.auditoriumNumber;
+  }
+
+  /**
+   * 
+   * @return available seats
+   */
+
   public void showAvailableSeats() {
     for (int i = 0; i < availableSeats.length; i++) {
-      for (int j = 0; j < availableSeats[i].length; j++) {
-        System.out.print("| ");
-        if (availableSeats[i][j] != null)
-          System.out.print(availableSeats[i][j]);
-        else
-          System.out.print("A");
-        System.out.print(" |");
-      }
+      for (int j = 0; j < availableSeats[i].length; j++)
+        System.out.print("| "+availableSeats[i][j]+" |");
       System.out.println();
     }
     System.out.println();
@@ -57,23 +76,6 @@ public class Showtime {
     if (availableSeats[i][j] == null)
       availableSeats[i][j] = " ";
     else
-      System.out
-          .println("The seat in row " + j + ", column " + i + " is already taken. Choose again.");
-  }
-
-  /**
-   * 
-   * @return event
-   */
-  public Event getEvent() {
-    return this.event;
-  }
-
-  /**
-   * 
-   * @return auditorium number
-   */
-  public String getAuditoriumNumber() {
-    return this.auditoriumNumber;
+      System.out.println("The seat in row " + j + ", column " + i + " is already taken. Choose again.");
   }
 }
