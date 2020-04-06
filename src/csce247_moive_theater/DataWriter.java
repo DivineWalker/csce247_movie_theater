@@ -103,7 +103,17 @@ public class DataWriter extends DataConstants {
     eventDetails.put(EVENT_STARS, event.getStars());
     eventDetails.put(EVENT_GENRE, event.getGenre());
     eventDetails.put(EVENT_DESCRIPTION, event.getDescription());
+    eventDetails.put(EVENT_TYPE, event.getType());
 
+    if (event.getType().equals("movie")) {
+      eventDetails = getMovieJSON((Movie) event, eventDetails);
+    }
+
+    return eventDetails;
+  }
+
+  private static JSONObject getMovieJSON(Movie movie, JSONObject eventDetails) {
+    eventDetails.put(MOVIE_MPAA_RATING, movie.getMpaaRating());
     return eventDetails;
   }
 
