@@ -33,6 +33,26 @@ public abstract class Event {
     this.reviews = new ArrayList<>();
   }
 
+  /**
+   * Construct an existing event from the JSON Loader
+   * 
+   * @param name - name of the event
+   * @param runTime - run time of the event
+   * @param stars - actor/performer staring the event
+   * @param genre - genre of the event
+   * @param description - short description of the event
+   * @param reviews - reviews of the event
+   */
+  public Event(String name, int runTime, String stars, String genre, String description,
+      ArrayList<String> reviews) {
+    this.name = name;
+    this.runTime = runTime;
+    this.stars = stars;
+    this.genre = genre;
+    this.description = description;
+    this.reviews = reviews;
+  }
+
   public String getName() {
     return this.name;
   }
