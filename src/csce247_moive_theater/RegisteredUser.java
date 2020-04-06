@@ -29,5 +29,6 @@ public class RegisteredUser extends User {
     this.username = username;
     this.password = password;
     this.isMilitary = isMilitary;
+    this.type = "registered";
   }
 }
