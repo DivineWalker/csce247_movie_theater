@@ -19,11 +19,15 @@ public abstract class Event {
    * Creates a new Event
    * 
    * @param name - name of the event -
+   * 
    */
-  public Event(String name) {
+  public Event(String name, int runTime, String stars, String genre, String description) {
     this.name = name;
-
-    reviews = new ArrayList<>();
+    this.runTime = runTime;
+    this.stars = stars;
+    this.genre = genre;
+    this.description = description;
+    this.reviews = new ArrayList<>();  
   }
 
   public String getName() {
