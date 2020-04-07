@@ -28,6 +28,25 @@ public class User {
   }
 
   /**
+   * Construct an existing guest user from JSON
+   * 
+   * @param firstName Users first name
+   * @param lastName Users last name
+   * @param email Users email address
+   * @param phoneNumber Users phone number
+   * @param orderHistory Users order history
+   */
+  public User(String firstName, String lastName, String email, String phoneNumber,
+      ArrayList<Order> orderHistory) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.type = "guest";
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.orderHistory = orderHistory;
+  }
+
+  /**
    * Purchases the users tickets, adds them to their order history, then displays the ticket
    * 
    * @param showtime Showtime the user would like to purchase tickets for
