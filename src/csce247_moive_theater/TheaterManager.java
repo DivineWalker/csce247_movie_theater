@@ -19,20 +19,35 @@ public class TheaterManager {
 	private ArrayList<Venue>venues;
 	private ArrayList<User>users;
 	private ArrayList<Event>events;
-	private ArrayList<Showtime>showtimes;	
-	public Event createEvent(Event event) {
-		System.out.println("Enter name of event");		
-		event.name=sc.nextLine();
+	private ArrayList<Showtime>showtimes;
+	private ArrayList<String>reviews;
+	public Event createEvent() {			
+		System.out.println("Enter name of event");
+		String name=sc.nextLine();
 		System.out.println("Enter run time of event");
-		event.runTime=Integer.parseInt(sc.nextLine());;
+		int runTime=Integer.parseInt(sc.nextLine());;
 		System.out.println("Enter actors/performers");
-		event.stars=sc.nextLine();
+		String stars=sc.nextLine();
 		System.out.println("Enter genre of event");
-		event.genre=sc.nextLine();
+		String genre=sc.nextLine();
 		System.out.println("Enter description of event");
-		event.description=sc.nextLine();		
-		events.add(event);
-		return event;
+		String description=sc.nextLine();	
+		System.out.println("Enter type of event: movie/play/concert");
+		if(t.equalsIgnoreCase("movie")) {			
+			String mpaaRating="";
+			Movie newMovie=new Movie(name,runTime,stars,genre,description,mpaaRating);
+		}
+		else if(t.equalsIgnoreCase("play")) {
+			Play newPlay=new Play(name,runTime,stars,genre,description);
+		}
+		else if(t.equalsIgnoreCase("concert")) {
+			Concert newConcert=new Concert(name,runTime,stars,genre,description);
+		}
+		else
+			System.out.println("Wrong type");
+		Event newEvent=new Event(name,runTime,stars,genre,description,reviews);
+		events.add(newEvent);
+		return newEvent;
 	}	
 	public Venue createVenue() {
 		System.out.println("Enter name of venue");
@@ -144,7 +159,7 @@ public class TheaterManager {
 				System.out.println("Event DNE");
 		}				
 	}
-	public void displayReviews() {
+	public ArrayList<String> displayReviews() {
 		System.out.println("Enter name of event you want to check reviews");
 		String n=sc.nextLine();
 		for(int i=0;i<events.size();i++) {
@@ -155,6 +170,7 @@ public class TheaterManager {
 			else 
 				System.out.println("Event DNE");			
 		}
+		return reviews;
 	}
 	public void removeShowtime(String venueName,String eventName) {
 		for(int i=0;i<showtimes.size();i++) {
