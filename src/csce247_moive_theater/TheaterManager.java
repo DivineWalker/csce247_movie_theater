@@ -166,6 +166,7 @@ public class TheaterManager {
 			}
 		}
 	}	
+	//Dealing with ticket issue under senario 1
 	public void ticketS1() {
 		double amountPaid=0,ap=0,cp=0,hp=0;
 		for(int i=0;i<venues.size();i++) {
@@ -199,7 +200,9 @@ public class TheaterManager {
 		String seatNumber2=String.valueOf(r.nextInt(s*s));
 		while(seatNumber2==seatNumber1)
 			seatNumber2=String.valueOf(r.nextInt(s*s));		
-	}
+	
+	}	
+	//Dealing with ticket issue under senario 2	 
 	public void ticketS2() {
 		double amountPaid=0,ap=0,cp=0,hp=0;
 		for(int i=0;i<venues.size();i++) {
@@ -236,6 +239,7 @@ public class TheaterManager {
 		String rv=sc.nextLine();	
 		st.getEvent().reviews.add(rv);
 		System.out.println("Thanks\nReview submitted");
+		
 	}	
 	public void categorySearch(){
 		System.out.println("Enter Movie or Play or Concert");
