@@ -14,6 +14,11 @@ import org.json.simple.parser.JSONParser;
  */
 public class DataLoader extends DataConstants {
 
+  /**
+   * Loads all users from the users.json file and returns them in an array list
+   * 
+   * @return An array list of users in the json file
+   */
   public static ArrayList<User> loadUsers() {
     ArrayList<User> users = new ArrayList<User>();
 
@@ -47,6 +52,11 @@ public class DataLoader extends DataConstants {
 
   }
 
+  /**
+   * Loads all events from the events.json file and returns them in an array list
+   * 
+   * @return An array list of events in the json file
+   */
   public static ArrayList<Event> loadEvents() {
     try {
       FileReader reader = new FileReader(EVENT_FILE_NAME);
@@ -64,7 +74,13 @@ public class DataLoader extends DataConstants {
     return null;
   }
 
-  private static final Event getEventData(JSONObject eventDetails) {
+  /**
+   * Turn the event JSONObject back into an event class
+   * 
+   * @param eventDetails A JSONObject of an event
+   * @return A fully constructed event class
+   */
+  private static Event getEventData(JSONObject eventDetails) {
     String name = (String) eventDetails.get(EVENT_NAME);
     int runTime = (int) eventDetails.get(EVENT_RUN_TIME);
     String stars = (String) eventDetails.get(EVENT_STARS);
@@ -77,19 +93,22 @@ public class DataLoader extends DataConstants {
 
     if (type.equals("movie")) {
       String mpaaRating = (String) eventDetails.get(MOVIE_MPAA_RATING);
-      Movie newMovie = new Movie(name, runTime, stars, genre, description, reviews, mpaaRating);
-      return newMovie;
+      return new Movie(name, runTime, stars, genre, description, reviews, mpaaRating);
     } else if (type.equals("play")) {
-      Play newPlay = new Play(name, runTime, stars, genre, description, reviews);
-      return newPlay;
+      return new Play(name, runTime, stars, genre, description, reviews);
     } else if (type.equals("concert")) {
-      Concert newConcert = new Concert(name, runTime, stars, genre, description, reviews);
-      return newConcert;
+      return new Concert(name, runTime, stars, genre, description, reviews);
     } else {
       return null;
     }
   }
 
+  /**
+   * Turn the JSONArray of reviews back into an Array List of strings
+   * 
+   * @param jsonReviews a JSONArray of reviews
+   * @return A string ArrayList of reviews
+   */
   private static final ArrayList<String> getReviewData(JSONArray jsonReviews) {
     ArrayList<String> reviews = new ArrayList<String>();
 
@@ -101,7 +120,12 @@ public class DataLoader extends DataConstants {
     return reviews;
   }
 
-  public static final ArrayList<Venue> loadVenues() {
+  /**
+   * Loads all venues from the venues.json file and returns them in an array list
+   * 
+   * @return An array list of venues in the json file
+   */
+  public static ArrayList<Venue> loadVenues() {
     try {
       FileReader reader = new FileReader(VENUE_FILE_NAME);
       JSONParser parser = new JSONParser();
@@ -118,6 +142,12 @@ public class DataLoader extends DataConstants {
     return null;
   }
 
+  /**
+   * Turn the venue JSONObject back into an venue class
+   * 
+   * @param venueDetails A JSONObject of a venue
+   * @return A fully constructed venue
+   */
   private static Venue getVenueData(JSONObject venueDetails) {
     String name = (String) venueDetails.get(VENUE_NAME);
     String address = (String) venueDetails.get(VENUE_ADDRESS);
@@ -151,6 +181,12 @@ public class DataLoader extends DataConstants {
         auditoriums);
   }
 
+  /**
+   * Turns a JSONObject of an auditorium back into an auditorium class
+   * 
+   * @param auditoriumDetails A JSONObject of an auditorium
+   * @return A fully constructed auditorium
+   */
   private static Auditorium getAuditoriumData(JSONObject auditoriumDetails) {
     String auditoriumNumber = (String) auditoriumDetails.get(AUDITORIUM_NUMBER);
     JSONArray seatingRows = (JSONArray) auditoriumDetails.get(AUDITORIUM_SEATING_MAP);
@@ -160,6 +196,13 @@ public class DataLoader extends DataConstants {
     return new Auditorium(auditoriumNumber, seatingMap);
   }
 
+  /**
+   * Turns the double JSONArray back into double array of Strings
+   * 
+   * @param seatingRows first dimension of the JSONArray
+   * @param seatingColumns second dimension of the JSONArray
+   * @return A fully filled seating layout
+   */
   private static String[][] convertSeatingLayout(JSONArray seatingRows, JSONArray seatingColumns) {
     String[][] seatingMap = new String[seatingRows.size()][seatingColumns.size()];
     for (int i = 0; i < seatingRows.size(); ++i) {
@@ -171,7 +214,12 @@ public class DataLoader extends DataConstants {
     return seatingMap;
   }
 
-  public static final ArrayList<Showtime> loadShowtimes() {
+  /**
+   * Loads all showtimes from the showtimes.json file and returns them in an array list
+   * 
+   * @return An array list of all showtimes in the json file
+   */
+  public static ArrayList<Showtime> loadShowtimes() {
     try {
       FileReader reader = new FileReader(SHOWTIME_FILE_NAME);
       JSONArray showtimesJSON = (JSONArray) new JSONParser().parse(reader);
@@ -187,6 +235,12 @@ public class DataLoader extends DataConstants {
     return null;
   }
 
+  /**
+   * Turns a showtime JSONObject back into a Showtime class
+   * 
+   * @param showtimeDetails A showtime JSONObject
+   * @return a fully constructed Showtime class
+   */
   private static Showtime getShowtimeData(JSONObject showtimeDetails) {
     Venue venue = getVenueData((JSONObject) showtimeDetails.get(SHOWTIME_VENUE));
     Event event = getEventData((JSONObject) showtimeDetails.get(SHOWTIME_EVENT));
