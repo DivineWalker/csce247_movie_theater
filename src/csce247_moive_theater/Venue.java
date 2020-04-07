@@ -45,6 +45,28 @@ public class Venue {
   }
 
   /**
+   * Construct an existing venue from JSON Data
+   * 
+   * @param name name of venue
+   * @param address address of venue
+   * @param type type of venue
+   * @param adultTicketPrice price for adult ticket
+   * @param childTicketPrice price for child ticket
+   * @param handicapTicketPrice price for handicap ticket
+   * @param auditoriums list of auditoriums inside the venue
+   */
+  public Venue(String name, String address, String type, double adultTicketPrice,
+      double childTicketPrice, double handicapTicketPrice, ArrayList<Auditorium> auditoriums) {
+    this.name = name;
+    this.address = address;
+    this.type = type;
+    this.adultTicketPrice = adultTicketPrice;
+    this.childTicketPrice = childTicketPrice;
+    this.handicapTicketPrice = handicapTicketPrice;
+    this.auditoriums = auditoriums;
+  }
+
+  /**
    * 
    * @param auditoriumNumber
    * @return auditorium
