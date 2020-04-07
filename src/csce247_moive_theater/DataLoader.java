@@ -87,20 +87,12 @@ public class DataLoader extends DataConstants {
     String genre = (String) eventDetails.get(EVENT_GENRE);
     String description = (String) eventDetails.get(EVENT_DESCRIPTION);
     String type = (String) eventDetails.get(EVENT_TYPE);
+    String rating = (String) eventDetails.get(EVENT_RATING);
 
     JSONArray jsonReviews = (JSONArray) eventDetails.get(EVENT_REVIEWS);
     ArrayList<String> reviews = getReviewData(jsonReviews);
 
-    if (type.equals("movie")) {
-      String mpaaRating = (String) eventDetails.get(MOVIE_MPAA_RATING);
-      return new Movie(name, runTime, stars, genre, description, reviews, mpaaRating);
-    } else if (type.equals("play")) {
-      return new Play(name, runTime, stars, genre, description, reviews);
-    } else if (type.equals("concert")) {
-      return new Concert(name, runTime, stars, genre, description, reviews);
-    } else {
-      return null;
-    }
+    return new Event(name, runTime, stars, genre, description, type, rating, reviews);
   }
 
   /**
