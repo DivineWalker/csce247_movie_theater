@@ -90,14 +90,6 @@ public class User {
     }
   }
 
-  private void applyCoupon(String couponNumber) {
-
-  }
-
-  private void applyDiscounts() {
-
-  }
-
   public String getFirstName() {
     return firstName;
   }
