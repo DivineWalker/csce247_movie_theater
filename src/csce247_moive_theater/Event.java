@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author brandon Base Event type, will be extended by different event types: Movie, Play, and
  *         Concert
  */
-public abstract class Event {
+public class Event {
   protected String name;
   protected ArrayList<String> reviews;
   protected int runTime;
