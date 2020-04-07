@@ -367,6 +367,9 @@ public class TheaterManager {
     }
   }
 
+  /**
+   * Load all the information from the JSON files into the internal Array Lists
+   */
   private void loadJSON() {
     DataLoader jsonLoader = new DataLoader();
     users = jsonLoader.loadUsers();
