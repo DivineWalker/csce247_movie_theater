@@ -1,5 +1,7 @@
 package csce247_moive_theater;
 
+import java.util.ArrayList;
+
 public class RegisteredUser extends User {
   private String dateOfBirth;
   private String address;
@@ -32,6 +34,17 @@ public class RegisteredUser extends User {
     this.type = "registered";
   }
 
+  public RegisteredUser(String firstName, String lastName, String email, String phoneNumber,
+      ArrayList<Order> orderHistory, String dateOfBirth, String address, String username,
+      String password, boolean isMilatry) {
+    super(firstName, lastName, email, phoneNumber, orderHistory);
+    this.dateOfBirth = dateOfBirth;
+    this.address = address;
+    this.username = username;
+    this.password = password;
+    this.isMilitary = isMilitary;
+    this.type = "registered";
+  }
 
   public String getDateOfBirth() {
     return dateOfBirth;
