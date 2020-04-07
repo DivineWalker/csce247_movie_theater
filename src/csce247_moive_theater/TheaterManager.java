@@ -9,6 +9,13 @@ public class TheaterManager {
 	Scanner sc=new Scanner(System.in);
 	private static TheaterManager theaterManager;
 	private TheaterManager() {}
+	public static TheaterManager getInstance() {
+		if(theaterManager==null) {
+			System.out.println("Creating a theater manager");
+			theaterManager=new TheaterManager();					
+		}		
+		return theaterManager;
+	}
 	private ArrayList<Venue>venues;
 	private ArrayList<User>users;
 	private ArrayList<Event>events;
@@ -210,12 +217,5 @@ public class TheaterManager {
 			else
 				System.out.println("Such event DNE");
 		}
-	}
-	public static TheaterManager getInstance() {
-		if(theaterManager==null) {
-			System.out.println("Creating a theater manager");
-			theaterManager=new TheaterManager();					
-		}		
-		return theaterManager;
 	}
 }
