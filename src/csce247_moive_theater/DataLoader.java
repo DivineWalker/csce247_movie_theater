@@ -115,7 +115,7 @@ public class DataLoader extends DataConstants {
    * @param jsonReviews a JSONArray of reviews
    * @return A string ArrayList of reviews
    */
-  private static final ArrayList<String> getReviewData(JSONArray jsonReviews) {
+  private static ArrayList<String> getReviewData(JSONArray jsonReviews) {
     ArrayList<String> reviews = new ArrayList<String>();
 
     for (int i = 0; i < jsonReviews.size(); ++i) {
