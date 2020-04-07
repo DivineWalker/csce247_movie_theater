@@ -8,20 +8,37 @@ import java.util.Scanner;
 public class TheaterManager {
 	Scanner sc=new Scanner(System.in);
 	private static TheaterManager theaterManager;
-	private TheaterManager() {}
+	TheaterManager() {}
 	public static TheaterManager getInstance() {
 		if(theaterManager==null) {
-			System.out.println("Creating a theater manager");
+			System.out.println("Creating a theater manager.......");
 			theaterManager=new TheaterManager();					
 		}		
 		return theaterManager;
 	}
-	private ArrayList<Venue>venues=new ArrayList<Venue>();
-	private ArrayList<User>users=new ArrayList<User>();
-	private ArrayList<Event>events=new ArrayList<Event>();
-	private ArrayList<Showtime>showtimes=new ArrayList<Showtime>();
-	private ArrayList<String>reviews=new ArrayList<String>(); 
-	public Event createEvent() {		
+	ArrayList<Venue>venues=new ArrayList<Venue>();
+	ArrayList<User>users=new ArrayList<User>();
+	ArrayList<Event>events=new ArrayList<Event>();
+	ArrayList<Showtime>showtimes=new ArrayList<Showtime>();
+	ArrayList<String>reviews=new ArrayList<String>();
+	public ArrayList<Venue>getVenues(){
+		return venues;
+	}
+	
+	public ArrayList<User>getUsers(){
+		return users;
+	}
+	public void setEvents(ArrayList events){
+		this.events=events;
+		}
+	public ArrayList<Event>getEvents(){
+		return events;
+	}
+	public ArrayList<Showtime>getShowtimes(){
+		return showtimes;
+	}
+	
+	public void createEvent() {		
 		System.out.println("Creating a new event");
 		System.out.println("Enter name of event");
 		String name=sc.nextLine();
@@ -40,9 +57,9 @@ public class TheaterManager {
 		String rating="rating";
 		Event newEvent=new Event(name,runTime,stars,genre,description,type,rating);
 		events.add(newEvent);
-		return newEvent;
+		System.out.println("New event created\n");
 	}	
-	public Venue createVenue() {
+	public void createVenue() {
 		System.out.println("Creating a new venue");
 		System.out.println("Enter name of venue");
 		String name=sc.nextLine();
@@ -62,39 +79,28 @@ public class TheaterManager {
 		int numberOfAuditoriums=1;
 		Venue newVenue=new Venue(name,address,type,adultTicketPrice,childTicketPrice,handicapTicketPrice,seatingMap,numberOfAuditoriums);
 		venues.add(newVenue);
-		return newVenue;
+		System.out.println("New venue created\n");
 	}	
-	public Showtime createShowtime() {
-		System.out.println("Creating a new showtime");
-		Event event=null;
-		Venue venue=null;
-		System.out.println("Choose event:");
-		for(Event e:events) 
-			System.out.println(e.getName());
-		String i1=sc.nextLine();		
-		for(int i=0;i<events.size();i++) {
-			if(events.get(i).getName().equalsIgnoreCase(i1))			
-				event=events.get(i);
-			else 
-				System.out.println("Event DNE");
-		}
-		System.out.println("Choose venue:");
-		for(Venue v:venues)
-			System.out.println(v.getName());
-		String i2=sc.nextLine();
-		for(int i=0;i<venues.size();i++) {
-			if(venues.get(i).getName().equalsIgnoreCase(i2))
-				venue=venues.get(i);
-			else
-				System.out.println("Venue DNE");
-		}		
+	public void createShowtime() {
 		/*System.out.println("Enter name of auditorium");
 		String auditoriumNumber=sc.nextLine();*/
-		String auditoriumNumber="";
-		Showtime newShowtime=new Showtime(venue,event,auditoriumNumber);
-		return newShowtime;
+		String auditoriumNumber="";		
+		System.out.println("Creating a new showtime");	
+		for(int i=0;i<venues.size();i++) {
+			System.out.println("Enter size of seats at this venue");
+			int s=Integer.parseInt(sc.nextLine());
+			String[][] availableSeats=new String[s][s];
+			for(int j=0;j<events.size();i++) {
+				System.out.println("Enter time of show\nat venue: "+venues.get(i).getName()+"\nfor event: "+events.get(j).getName());
+				String timeOfShow=sc.nextLine();
+				Showtime newShowtime=new Showtime(venues.get(i),events.get(j),availableSeats,timeOfShow,auditoriumNumber);	
+				showtimes.add(newShowtime);
+			}					
+		}
+		System.out.println("New showtime created\n");
 	}
-	public User createUser() {
+	public void createUser() {
+		System.out.println("Creating a new user");
 		System.out.println("Enter your first name");
 		String firstName=sc.nextLine();
 		System.out.println("Enter your last name");
@@ -105,12 +111,11 @@ public class TheaterManager {
 		String phoneNumber=sc.nextLine();		
 		User newUser=new User(firstName,lastName,email,phoneNumber) ;
 		users.add(newUser);
-		return newUser;
 	}		
 	public ArrayList<Showtime> titleSearch(String name){
 		for(int i=0;i<showtimes.size();i++) {
 			if(showtimes.get(i).getEvent().getName().equalsIgnoreCase(name))
-				System.out.println(showtimes.get(i));
+				System.out.println(showtimes.get(i).toString());
 			else System.out.println("Event DNE");
 		}
 		return showtimes;
