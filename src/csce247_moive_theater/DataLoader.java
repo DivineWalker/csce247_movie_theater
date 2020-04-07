@@ -43,6 +43,20 @@ public class DataLoader extends DataConstants {
           String seatNumber = (String) orderDetails.get(ORDER_SEAT_NUMBER);
           String orderNumber = (String) orderDetails.get(ORDER_ORDER_NUMBER);
         }
+
+        if (type.equals("guest")) {
+          User newUser = new User(firstName, lastName, email, phoneNumber, orderHistory);
+          users.add(newUser);
+        } else if (type.equals("registered")) {
+          String dateOfBirth = (String) userDetails.get(USER_DATE_OF_BIRTH);
+          String address = (String) userDetails.get(USER_ADDRESS);
+          String username = (String) userDetails.get(USER_USERNAME);
+          String password = (String) userDetails.get(USER_PASSWORD);
+          boolean isMilitary = (boolean) userDetails.get(USER_IS_MILITARY);
+          RegisteredUser newRegisteredUser = new RegisteredUser(firstName, lastName, email,
+              phoneNumber, orderHistory, dateOfBirth, address, username, password, isMilitary);
+          users.add(newRegisteredUser);
+        }
       }
       return users;
     } catch (Exception e) {
