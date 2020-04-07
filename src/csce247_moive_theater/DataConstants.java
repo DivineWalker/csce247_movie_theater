@@ -27,6 +27,9 @@ public abstract class DataConstants {
   protected static final String EVENT_STARS = "stars";
   protected static final String EVENT_GENRE = "genre";
   protected static final String EVENT_DESCRIPTION = "description";
+  protected static final String EVENT_TYPE = "type";
+
+  protected static final String MOVIE_MPAA_RATING = "mpaaRating";
 
   protected static final String VENUE_FILE_NAME = "src/venues.json";
   protected static final String VENUE_NAME = "name";
