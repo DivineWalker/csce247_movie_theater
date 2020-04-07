@@ -6,10 +6,20 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * Writes all the system data back into the program from JSON Files
+ * 
+ * @author Christopher Moyer
+ *
+ */
 public class DataWriter extends DataConstants {
 
+  /**
+   * Save the given users array list to a json file
+   * 
+   * @param users array list of users
+   */
   public static void saveUsers(ArrayList<User> users) {
-    // ArrayList<User> users = manager.getPeople();
     JSONArray jsonUsers = new JSONArray();
 
     for (int i = 0; i < users.size(); ++i) {
@@ -24,6 +34,12 @@ public class DataWriter extends DataConstants {
     }
   }
 
+  /**
+   * Turn the user class into JSON
+   * 
+   * @param user the user to be converted
+   * @return a JSONObject of a user
+   */
   private static JSONObject getUserJSON(User user) {
     JSONObject userDetails = new JSONObject();
     userDetails.put(USER_FIRST_NAME, user.getFirstName());
@@ -57,6 +73,12 @@ public class DataWriter extends DataConstants {
     return userDetails;
   }
 
+  /**
+   * Turns the orderHistory array list into a JSONArray
+   * 
+   * @param orderHistory array list of a users order history
+   * @return a JSONArray of a users order history
+   */
   private static JSONArray saveOrderHistory(ArrayList<Order> orderHistory) {
     JSONArray userOrderHistory = new JSONArray();
 
@@ -67,6 +89,12 @@ public class DataWriter extends DataConstants {
     return userOrderHistory;
   }
 
+  /**
+   * Turn the order details into JSON
+   * 
+   * @param order the order to be converted
+   * @return a JSONObject of an order
+   */
   private static JSONObject getOrderHistoryJSON(Order order) {
     JSONObject orderHistoryDetails = new JSONObject();
 
@@ -78,8 +106,12 @@ public class DataWriter extends DataConstants {
     return orderHistoryDetails;
   }
 
+  /**
+   * Saves the given events array list to a json file
+   * 
+   * @param events array list of events
+   */
   public static void saveEvents(ArrayList<Event> events) {
-    // ArrayList<Event> events = manager.getEvents();
     JSONArray jsonEvents = new JSONArray();
 
     for (int i = 0; i < events.size(); ++i) {
@@ -94,6 +126,12 @@ public class DataWriter extends DataConstants {
     }
   }
 
+  /**
+   * Turns an event into JSON
+   * 
+   * @param event event to be converted
+   * @return JSONObject of an event
+   */
   private static JSONObject getEventJSON(Event event) {
     JSONObject eventDetails = new JSONObject();
 
@@ -117,6 +155,12 @@ public class DataWriter extends DataConstants {
     return eventDetails;
   }
 
+  /**
+   * Turns an array list of reviews into a JSONArray
+   * 
+   * @param reviews array list to be converted
+   * @return JSONArray of reviews
+   */
   private static JSONArray saveEventReviews(ArrayList<String> reviews) {
     JSONArray jsonReviews = new JSONArray();
 
@@ -127,6 +171,12 @@ public class DataWriter extends DataConstants {
     return jsonReviews;
   }
 
+  /**
+   * Turns a single string into a JSONObject
+   * 
+   * @param review string to be converted
+   * @return a JSONObject of a string
+   */
   private static JSONObject getEventReviewJSON(String review) {
     JSONObject reviewDetails = new JSONObject();
 
@@ -135,6 +185,11 @@ public class DataWriter extends DataConstants {
     return reviewDetails;
   }
 
+  /**
+   * Saves the given venues array list to a json file
+   * 
+   * @param venues array list of venues
+   */
   public static void saveVenues(ArrayList<Venue> venues) {
     // ArrayList<Venue> venues = manager.getVenues();
     JSONArray jsonVenues = new JSONArray();
@@ -151,6 +206,12 @@ public class DataWriter extends DataConstants {
     }
   }
 
+  /**
+   * Turn a venue into JSON
+   * 
+   * @param venue venue to be converted
+   * @return a JSONObject of a venue
+   */
   private static JSONObject getVenueJSON(Venue venue) {
     JSONObject venueDetails = new JSONObject();
 
@@ -165,6 +226,12 @@ public class DataWriter extends DataConstants {
     return venueDetails;
   }
 
+  /**
+   * Turns an array list of auditoriums into a JSONArray
+   * 
+   * @param auditoriums array list of auditoriums
+   * @return JSONArray of auditoriums
+   */
   private static JSONArray saveVenueAuditoriums(ArrayList<Auditorium> auditoriums) {
     JSONArray jsonAuditoriums = new JSONArray();
 
@@ -175,20 +242,27 @@ public class DataWriter extends DataConstants {
     return jsonAuditoriums;
   }
 
+  /**
+   * Turns an auditorium into JSON
+   * 
+   * @param auditorium auditorium to be converted
+   * @return a JSONObject of an auditroium
+   */
   private static JSONObject getAuditoriumJSON(Auditorium auditorium) {
     JSONObject auditoriumDetails = new JSONObject();
     JSONArray seatingArray = convertSeatingArray(auditorium.getSeatingMap());
-
-    /*
-     * for (String[] row : seatingMap) { JSONArray seatingColumnArray = new JSONArray(); for (String
-     * column : row) { seatingColumnArray.add(column); } seatingArray.add(seatingColumnArray); }
-     */
     auditoriumDetails.put(AUDITORIUM_NUMBER, auditorium.getAuditoriumNumber());
     auditoriumDetails.put(AUDITORIUM_SEATING_MAP, seatingArray);
 
     return auditoriumDetails;
   }
 
+  /**
+   * Turn the seating maps string double array into a json double array
+   * 
+   * @param seatingMap the map of seats
+   * @return a double json array of seats
+   */
   private static JSONArray convertSeatingArray(String[][] seatingMap) {
     JSONArray seatingArray = new JSONArray();
 
@@ -203,6 +277,11 @@ public class DataWriter extends DataConstants {
     return seatingArray;
   }
 
+  /**
+   * Saves the given showtimes array list to a json file
+   * 
+   * @param showtimes array list of showtimes
+   */
   public static void saveShowtimes(ArrayList<Showtime> showtimes) {
     JSONArray jsonShowtimes = new JSONArray();
 
@@ -218,6 +297,12 @@ public class DataWriter extends DataConstants {
     }
   }
 
+  /**
+   * Turns the showtime into json
+   * 
+   * @param showtime showtime to be converted
+   * @return a JSONObject of a showtime
+   */
   private static JSONObject getShowtimeJSON(Showtime showtime) {
     JSONObject showtimeDetails = new JSONObject();
 
