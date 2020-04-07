@@ -20,7 +20,7 @@ public class TheaterManager {
 	private ArrayList<User>users;
 	private ArrayList<Event>events;
 	private ArrayList<Showtime>showtimes;
-	private ArrayList<String>reviews;
+	private ArrayList<String>reviews; 
 	public Event createEvent() {			
 		System.out.println("Enter name of event");
 		String name=sc.nextLine();
@@ -33,19 +33,11 @@ public class TheaterManager {
 		System.out.println("Enter description of event");
 		String description=sc.nextLine();	
 		System.out.println("Enter type of event: movie/play/concert");
-		if(t.equalsIgnoreCase("movie")) {			
-			String mpaaRating="";
-			Movie newMovie=new Movie(name,runTime,stars,genre,description,mpaaRating);
-		}
-		else if(t.equalsIgnoreCase("play")) {
-			Play newPlay=new Play(name,runTime,stars,genre,description);
-		}
-		else if(t.equalsIgnoreCase("concert")) {
-			Concert newConcert=new Concert(name,runTime,stars,genre,description);
-		}
-		else
+		String type=sc.nextLine();
+		if(!type.equalsIgnoreCase("movie")&&!type.equalsIgnoreCase("play")&&!type.equalsIgnoreCase("concert"))				
 			System.out.println("Wrong type");
-		Event newEvent=new Event(name,runTime,stars,genre,description,reviews);
+		String rating="rating";
+		Event newEvent=new Event(name,runTime,stars,genre,description,type,rating);
 		events.add(newEvent);
 		return newEvent;
 	}	
@@ -142,7 +134,7 @@ public class TheaterManager {
 			}				
 		}
 		else 
-			System.out.println("Genre DNE");					
+			System.out.println("Type DNE");					
 		return showtimes;
 	}	
 	public void addReview(String review,String eventName) {
