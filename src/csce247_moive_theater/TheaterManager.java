@@ -4,14 +4,14 @@
 package csce247_moive_theater;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.Random;
 public class TheaterManager {
+	Random r=new Random();
 	Scanner sc=new Scanner(System.in);
 	private static TheaterManager theaterManager;
 	TheaterManager() {}
 	public static TheaterManager getInstance() {
 		if(theaterManager==null) {
-			System.out.println("Creating a theater manager.......");
 			theaterManager=new TheaterManager();					
 		}		
 		return theaterManager;
@@ -21,23 +21,10 @@ public class TheaterManager {
 	ArrayList<Event>events=new ArrayList<Event>();
 	ArrayList<Showtime>showtimes=new ArrayList<Showtime>();
 	ArrayList<String>reviews=new ArrayList<String>();
-	public ArrayList<Venue>getVenues(){
-		return venues;
-	}
-	
-	public ArrayList<User>getUsers(){
-		return users;
-	}
-	public void setEvents(ArrayList events){
-		this.events=events;
-		}
-	public ArrayList<Event>getEvents(){
-		return events;
-	}
-	public ArrayList<Showtime>getShowtimes(){
-		return showtimes;
-	}
-	
+	String nv;
+	Showtime st;
+	boolean searched;
+	int s=15;
 	public void createEvent() {		
 		System.out.println("Creating a new event");
 		System.out.println("Enter name of event");
@@ -112,15 +99,145 @@ public class TheaterManager {
 		User newUser=new User(firstName,lastName,email,phoneNumber) ;
 		users.add(newUser);
 	}		
-	public ArrayList<Showtime> titleSearch(String name){
-		for(int i=0;i<showtimes.size();i++) {
-			if(showtimes.get(i).getEvent().getName().equalsIgnoreCase(name))
-				System.out.println(showtimes.get(i).toString());
-			else System.out.println("Event DNE");
-		}
-		return showtimes;
+	public void createRegisteredUser() {
+		boolean isMilitary;
+		System.out.println("Enter your date of birth");
+		String dateOfBirth=sc.nextLine();
+		System.out.println("Enter your address");
+		String address=sc.nextLine();
+		System.out.println("Enter your username");
+		String username=sc.nextLine();
+		System.out.println("Enter your password");
+		String password=sc.nextLine();
+		System.out.println("Are you serving or have you served in military?\n"
+				+ "Enter yes or no");
+		String ans=sc.nextLine();
+		if(ans.equalsIgnoreCase("yes"))
+			isMilitary=true;
+		else if(ans.equalsIgnoreCase("no"))
+			isMilitary=false;		
 	}	
-	public ArrayList<Showtime> categorySearch(){
+	public void createEmployeeUser() {
+		boolean isMilitary;
+		System.out.println("Enter your date of birth");
+		String dateOfBirth=sc.nextLine();
+		System.out.println("Enter your address");
+		String address=sc.nextLine();
+		System.out.println("Enter your username");
+		String username=sc.nextLine();
+		System.out.println("Enter your password");
+		String password=sc.nextLine();
+		System.out.println("Are you serving or have you served in military?\n"
+				+ "Enter yes or no");
+		String ans=sc.nextLine();
+		if(ans.equalsIgnoreCase("yes"))
+			isMilitary=true;
+		else if(ans.equalsIgnoreCase("no"))
+			isMilitary=false;		
+	}	
+	public void search(){
+		System.out.println("Enter name of event you want to search");
+		String ne=sc.nextLine();
+		for(int i=0;i<showtimes.size();i++) {
+			if(showtimes.get(i).getEvent().getName().equalsIgnoreCase(ne)) {
+				System.out.println("Here is available showtime option:");
+				System.out.println(showtimes.get(i).toString());	
+				searched=true;
+			}
+			else {
+				searched=false;
+				System.out.println("Sorry\nThis event DNE");
+			}
+		}
+		while(searched) {
+			System.out.println("Enter name of venue you want to visit");
+			String nv=sc.nextLine();
+			for(int i=0;i<showtimes.size();i++) {
+				if(showtimes.get(i).getVenue().getName().equalsIgnoreCase(nv)) {
+					System.out.println("Here is showtime:");
+					System.out.println(showtimes.get(i).toString());	
+					Showtime st=showtimes.get(i);
+					searched=true;
+				}				
+				else {
+					searched=false;
+					System.out.println("Sorry\nVeneue DNE\nPlease re-check available showtime's venue name");
+				}					
+			}
+		}
+	}	
+	public void ticketS1() {
+		double amountPaid=0,ap=0,cp=0,hp=0;
+		for(int i=0;i<venues.size();i++) {
+			while(venues.get(i).getName().equalsIgnoreCase(nv)) {
+				ap=venues.get(i).getAdultTicketPrice();
+				cp=venues.get(i).getChildTicketPrice();
+				hp=venues.get(i).getHandicapTicketPrice();				
+			}
+		}
+		System.out.println("Enter type of first ticket:\nChoose one from adult/child/handicap");
+		String tt1=sc.nextLine();
+		if(tt1.equalsIgnoreCase("adult")) 
+			amountPaid=ap;
+		else if(tt1.equalsIgnoreCase("child"))
+			amountPaid=cp;
+		else if(tt1.equalsIgnoreCase("handicap"))
+			amountPaid=hp;
+		else
+			System.out.println("Wrong ticket type");
+		String seatNumber1=String.valueOf(r.nextInt(s*s));		
+		System.out.println("Enter type of second ticket:\nChoose one from adult/child/handicap");
+		String tt2=sc.nextLine();
+		if(tt2.equalsIgnoreCase("adult")) 
+			amountPaid+=ap;
+		else if(tt2.equalsIgnoreCase("child"))
+			amountPaid+=cp;
+		else if(tt2.equalsIgnoreCase("handicap"))
+			amountPaid+=hp;
+		else
+			System.out.println("Wrong ticket type");
+		String seatNumber2=String.valueOf(r.nextInt(s*s));
+		while(seatNumber2==seatNumber1)
+			seatNumber2=String.valueOf(r.nextInt(s*s));		
+	}
+	public void ticketS2() {
+		double amountPaid=0,ap=0,cp=0,hp=0;
+		for(int i=0;i<venues.size();i++) {
+			while(venues.get(i).getName().equalsIgnoreCase(nv)) {
+				ap=venues.get(i).getAdultTicketPrice();
+				cp=venues.get(i).getChildTicketPrice();
+				hp=venues.get(i).getHandicapTicketPrice();				
+			}
+		}
+		System.out.println("Enter type of first ticket:\nChoose one from adult/child/handicap");
+		String tt=sc.nextLine();
+		if(tt.equalsIgnoreCase("adult")) 
+			amountPaid=ap;
+		else if(tt.equalsIgnoreCase("child"))
+			amountPaid=cp;
+		else if(tt.equalsIgnoreCase("handicap"))
+			amountPaid=hp;
+		else
+			System.out.println("Wrong ticket type");
+		System.out.println("All seats are available now\n"
+				+ "Please choose your favored row and column");
+		System.out.println("Enter your favored row nubmer");
+		int r=Integer.parseInt(sc.nextLine());
+		System.out.println("Enter your favored column number");
+		int c=Integer.parseInt(sc.nextLine());	
+		String seatNumber=String.valueOf(s*r+c);
+		
+		System.out.println("Time passed......\n");
+		System.out.println("Please rate this event");
+		String rt=sc.nextLine();
+		st.getEvent().rating=rt;
+		System.out.println("Thanks\nRating submitted");
+		System.out.println("Please review this event");
+		String rv=sc.nextLine();	
+		st.getEvent().reviews.add(rv);
+		System.out.println("Thanks\nReview submitted");
+	}	
+	public void categorySearch(){
 		System.out.println("Enter Movie or Play or Concert");
 		String c=sc.nextLine();
 		if(c.equalsIgnoreCase("movie"))	{
@@ -143,7 +260,6 @@ public class TheaterManager {
 		}
 		else 
 			System.out.println("Wrong type");					
-		return showtimes;
 	}	
 	public void addReview(String review,String eventName) {
 		System.out.println("Enter name of event you want to review:");
@@ -159,7 +275,7 @@ public class TheaterManager {
 				System.out.println("Event DNE");
 		}				
 	}
-	public ArrayList<String> displayReviews() {
+	public void displayReviews() {
 		System.out.println("Enter name of event you want to check reviews");
 		String n=sc.nextLine();
 		for(int i=0;i<events.size();i++) {
@@ -170,7 +286,6 @@ public class TheaterManager {
 			else 
 				System.out.println("Event DNE");			
 		}
-		return reviews;
 	}
 	public void removeShowtime(String venueName,String eventName) {
 		for(int i=0;i<showtimes.size();i++) {
