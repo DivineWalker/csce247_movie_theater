@@ -15,6 +15,7 @@ public class Event {
   protected String genre;
   protected String description;
   protected String type;
+  protected String rating;
 
 
   /**
@@ -25,12 +26,14 @@ public class Event {
    * @param genre - genre of the event
    * @param description - short description of the event
    */
-  public Event(String name, int runTime, String stars, String genre, String description) {
+  public Event(String name, int runTime, String stars, String genre, String description, String type, String rating) {
     this.name = name;
     this.runTime = runTime;
     this.stars = stars;
     this.genre = genre;
     this.description = description;
+    this.type=type;
+    this.rating=rating;
     this.reviews = new ArrayList<>();
   }
 
@@ -44,13 +47,14 @@ public class Event {
    * @param description - short description of the event
    * @param reviews - reviews of the event
    */
-  public Event(String name, int runTime, String stars, String genre, String description,
+  public Event(String name, int runTime, String stars, String genre, String description, String type, String rating,
       ArrayList<String> reviews) {
     this.name = name;
     this.runTime = runTime;
     this.stars = stars;
     this.genre = genre;
     this.description = description;
+    this.type=type;
     this.reviews = reviews;
   }
 
@@ -76,9 +80,5 @@ public class Event {
 
   public String getDescription() {
     return description;
-  }
-
-  public String getType() {
-    return type;
   }
 }
