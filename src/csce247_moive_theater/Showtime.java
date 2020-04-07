@@ -22,7 +22,7 @@ public class Showtime {
     this.venue = venue;
     this.event = event;
     this.auditoriumNumber = auditoriumNumber;
-    this.availableSeats = venue.getAuditorium(auditoriumNumber).getSeatingMap();
+    //this.availableSeats = venue.getAuditorium(auditoriumNumber).getSeatingMap();
   }
 
   /**
