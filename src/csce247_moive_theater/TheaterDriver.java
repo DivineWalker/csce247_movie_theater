@@ -26,11 +26,11 @@ public class TheaterDriver {
       case 2:
         System.out.println("Welcome to Movie Theater!\n" + "Please register an account");
         TheaterManager rUser = TheaterManager.getInstance();
-        rUser.createUser();
+        User registeredUser = rUser.createUser();
         rUser.createRegisteredUser();
         System.out.println("Your registered account is created");
         Showtime case2Time = rUser.search();
-        rUser.ticketS2(case2Time, guest);
+        rUser.ticketS2(case2Time, registeredUser);
       case 3:
         System.out.println("Welcome to Movie Theater" + "Please create an employee account");
         TheaterManager eUser = TheaterManager.getInstance();

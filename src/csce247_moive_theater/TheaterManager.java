@@ -107,7 +107,7 @@ public class TheaterManager {
     System.out.println("New showtime created\n");
   }
 
-  public void createUser() {
+  public User createUser() {
     System.out.println("Creating a new user");
     System.out.println("Enter your first name");
     String firstName = sc.nextLine();
@@ -119,6 +119,7 @@ public class TheaterManager {
     String phoneNumber = sc.nextLine();
     User newUser = new User(firstName, lastName, email, phoneNumber);
     users.add(newUser);
+    return newUser;
   }
 
   public void createRegisteredUser() {
@@ -178,7 +179,7 @@ public class TheaterManager {
 
 
   // Dealing with ticket issue under senario 1
-  public void ticketS1() {
+  public void ticketS1(Showtime showtime, User user) {
     double amountPaid = 0, ap = 0, cp = 0, hp = 0;
     for (int i = 0; i < venues.size(); i++) {
       while (venues.get(i).getName().equalsIgnoreCase(nv)) {
@@ -212,10 +213,11 @@ public class TheaterManager {
     while (seatNumber2 == seatNumber1)
       seatNumber2 = String.valueOf(r.nextInt(s * s));
 
+    user.purchaseTicket(showtime, seatNumber1 + " " + seatNumber2, amountPaid);
   }
 
   // Dealing with ticket issue under senario 2
-  public void ticketS2() {
+  public void ticketS2(Showtime showtime, User user) {
     double amountPaid = 0, ap = 0, cp = 0, hp = 0;
     for (int i = 0; i < venues.size(); i++) {
       while (venues.get(i).getName().equalsIgnoreCase(nv)) {
@@ -242,10 +244,12 @@ public class TheaterManager {
     int c = Integer.parseInt(sc.nextLine());
     String seatNumber = String.valueOf(s * r + c);
 
+    user.purchaseTicket(showtime, seatNumber, amountPaid);
+
     System.out.println("Time passed......\n");
     System.out.println("Please rate this event");
     String rt = sc.nextLine();
-    st.getEvent().rating = rt;
+    showtime.getEvent().rating = rt;
     System.out.println("Thanks\nRating submitted");
     System.out.println("Please review this event");
     String rv = sc.nextLine();
