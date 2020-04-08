@@ -12,18 +12,18 @@ public class TheaterManager {
   Scanner sc = new Scanner(System.in);
   private static TheaterManager theaterManager;
 
-  private ArrayList<Venue> venues;
-  private ArrayList<User> users;
-  private ArrayList<Event> events;
-  private ArrayList<Showtime> showtimes;
-  private ArrayList<String> reviews;
+  ArrayList<Venue> venues = new ArrayList<Venue>();
+  ArrayList<User> users = new ArrayList<User>();
+  ArrayList<Event> events = new ArrayList<Event>();
+  ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
+  ArrayList<String> reviews = new ArrayList<String>();
 
   private TheaterManager() {
+    loadJSON();
     users = new ArrayList<User>();
     events = new ArrayList<Event>();
     showtimes = new ArrayList<Showtime>();
     reviews = new ArrayList<String>();
-    loadJSON();
   }
 
   public static TheaterManager getInstance() {
@@ -158,26 +158,25 @@ public class TheaterManager {
   }
 
   public Showtime search() {
-    int i;
-    System.out.println("Enter name of event you want to search");
-    String ne = sc.nextLine();
-    System.out.println("Enter name of venue you want to visit");
-    String nv = sc.nextLine();
-    for (i = 0; i < showtimes.size(); i++) {
-      while (showtimes.get(i).getEvent().getName() == ne
-          && showtimes.get(i).getVenue().getName() == nv) {
-        System.out.println("Here is available showtime option:");
-        System.out.println(showtimes.get(i).toString());
-        searched = true;
-        break;
-      }
-      if (searched == false)
-        System.out.println("Sorry\nThere is NO available showtime");
-    }
-    return showtimes.get(i);
+	  int i;   
+	  System.out.println("Enter name of event you want to search");    
+	  String ne = sc.nextLine();    
+	  System.out.println("Enter name of venue you want to visit");   
+	  String nv = sc.nextLine();    
+	  for (i = 0; i < showtimes.size(); i++) {    	
+		  while (showtimes.get(i).getEvent().getName().equalsIgnoreCase(ne) && showtimes.get(i).getVenue().getName().equalsIgnoreCase(nv)) {    	    		
+			  System.out.println("Here is available showtime option:");           		
+			  System.out.println(showtimes.get(i).toString());        		
+			  searched = true;        		
+			  break;        	
+		  }       
+		  if(searched == false)        
+			  System.out.println("Sorry\nThere is NO available showtime");     
+	  }    
+	  return showtimes.get(i);    
   }
-
-
+    
+  
 
   // Dealing with ticket issue under senario 1
   public void ticketS1() {
@@ -278,7 +277,7 @@ public class TheaterManager {
       System.out.println("Wrong type");
   }
 
-  public void addReview(String review, String eventName) {
+  public void addReview() {
     System.out.println("Enter name of event you want to review:");
     String n = sc.nextLine();
     for (int i = 0; i < events.size(); i++) {
@@ -367,7 +366,7 @@ public class TheaterManager {
   /**
    * Load all the information from the JSON files into the internal Array Lists
    */
-
+  
   private void loadJSON() {
     DataLoader jsonLoader = new DataLoader();
     users = jsonLoader.loadUsers();
@@ -375,4 +374,5 @@ public class TheaterManager {
     venues = jsonLoader.loadVenues();
     showtimes = jsonLoader.loadShowtimes();
   }
+  
 }
