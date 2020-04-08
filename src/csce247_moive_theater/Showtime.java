@@ -96,4 +96,13 @@ public class Showtime {
     else
       System.out.println("The seat in row " + j + ", column " + i + " is already taken. Choose again.");
   }
+
+  /**
+   * 
+   * @return toString
+   */
+  public String toString() {
+    return "Venue: " + this.venue + "\nEvent: " + this.event + "\nAvailable Seats: " + showAvailableSeats()
+        + "\nTime of Show: " + this.timeOfShow + "\nAuditorium Number: " + getAuditoriumNumber();
+  }
 }
