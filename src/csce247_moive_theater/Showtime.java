@@ -92,10 +92,19 @@ public class Showtime {
    * @param j seating row
    */
   public void takeSeat(int i, int j) {
-    if (availableSeats[i][j] == null)
+    if (availableSeats[i][j] == "A")
       availableSeats[i][j] = " ";
     else
       System.out
           .println("The seat in row " + j + ", column " + i + " is already taken. Choose again.");
+  }
+
+  /**
+   * 
+   * @return toString
+   */
+  public String toString() {
+    return "Venue: " + this.venue + "\nEvent: " + this.event + "\nAvailable Seats: " + showAvailableSeats()
+        + "\nTime of Show: " + this.timeOfShow + "\nAuditorium Number: " + getAuditoriumNumber();
   }
 }
