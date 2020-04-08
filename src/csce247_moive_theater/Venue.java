@@ -36,11 +36,12 @@ public class Venue {
     this.adultTicketPrice = adultTicketPrice;
     this.childTicketPrice = childTicketPrice;
     this.handicapTicketPrice = handicapTicketPrice;
-    
+
     auditoriums = new ArrayList<>();
 
+    initializeLayout(seatingMap);
     for (int i = 0; i < numberOfAuditoriums; i++) {
-      auditoriums.add(new Auditorium(("" + (i + 1)), initializeLayout(seatingMap)));
+      auditoriums.add(new Auditorium(("" + (i + 1)), seatingMap));
     }
   }
 
@@ -126,6 +127,7 @@ public class Venue {
   public ArrayList<Auditorium> getAuditoriumList() {
     return auditoriums;
   }
+
   public void initializeLayout(String[][] seatingMap) {
     for (int i = 0; i < seatingMap.length; i++)
       for (int j = 0; j < seatingMap[i].length; j++)
