@@ -35,6 +35,7 @@ public class Event {
     this.description = description;
     this.type = type;
     this.rating = rating;
+    
     this.reviews = new ArrayList<>();
   }
 
@@ -56,6 +57,8 @@ public class Event {
     this.genre = genre;
     this.description = description;
     this.type = type;
+    
+    reviews = new ArrayList<>();
     this.reviews = reviews;
   }
 
