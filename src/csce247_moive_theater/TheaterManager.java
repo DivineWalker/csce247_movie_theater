@@ -157,35 +157,26 @@ public class TheaterManager {
       isMilitary = false;
   }
 
-  public void search() {
-    System.out.println("Enter name of event you want to search");
-    String ne = sc.nextLine();
-    for (int i = 0; i < showtimes.size(); i++) {
-      if (showtimes.get(i).getEvent().getName().equalsIgnoreCase(ne)) {
-        System.out.println("Here is available showtime option:");
-        System.out.println(showtimes.get(i).toString());
-        searched = true;
-      } else {
-        searched = false;
-        System.out.println("Sorry\nThis event DNE");
-      }
-    }
-    while (searched) {
-      System.out.println("Enter name of venue you want to visit");
-      String nv = sc.nextLine();
-      for (int i = 0; i < showtimes.size(); i++) {
-        if (showtimes.get(i).getVenue().getName().equalsIgnoreCase(nv)) {
-          System.out.println("Here is showtime:");
-          System.out.println(showtimes.get(i).toString());
-          Showtime st = showtimes.get(i);
-          searched = true;
-        } else {
-          searched = false;
-          System.out.println("Sorry\nVeneue DNE\nPlease re-check available showtime's venue name");
-        }
-      }
-    }
+  public Showtime search() {
+	  int i;   
+	  System.out.println("Enter name of event you want to search");    
+	  String ne = sc.nextLine();    
+	  System.out.println("Enter name of venue you want to visit");   
+	  String nv = sc.nextLine();    
+	  for (i = 0; i < showtimes.size(); i++) {    	
+		  while (showtimes.get(i).getEvent().getName() == ne && showtimes.get(i).getVenue().getName() == nv) {    	    		
+			  System.out.println("Here is available showtime option:");           		
+			  System.out.println(showtimes.get(i).toString());        		
+			  searched = true;        		
+			  break;        	
+		  }       
+		  if(searched == false)        
+			  System.out.println("Sorry\nThere is NO available showtime");     
+	  }    
+	  return showtimes.get(i);    
   }
+    
+  
 
   // Dealing with ticket issue under senario 1
   public void ticketS1() {
@@ -375,6 +366,7 @@ public class TheaterManager {
   /**
    * Load all the information from the JSON files into the internal Array Lists
    */
+  
   private void loadJSON() {
     DataLoader jsonLoader = new DataLoader();
     users = jsonLoader.loadUsers();
