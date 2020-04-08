@@ -14,8 +14,8 @@ public class Showtime {
 
   /**
    * 
-   * @param venue            venue that the showtime is being added to
-   * @param event            what event is happening
+   * @param venue venue that the showtime is being added to
+   * @param event what event is happening
    * @param auditoriumNumber which auditorium it will be playing in
    */
   public Showtime(Venue venue, Event event, String auditoriumNumber, String timeOfShow) {
@@ -29,13 +29,14 @@ public class Showtime {
   /**
    * Construct an existing showtime from JSON Data
    * 
-   * @param venue            venue that the showtime is being added to
-   * @param event            what event is happening
-   * @param availableSeats   available seats for the show
-   * @param timeOfShow       time the show will start
+   * @param venue venue that the showtime is being added to
+   * @param event what event is happening
+   * @param availableSeats available seats for the show
+   * @param timeOfShow time the show will start
    * @param auditoriumNumber which auditorium it will be playing in
    */
-  public Showtime(Venue venue, Event event, String[][] availableSeats, String timeOfShow, String auditoriumNumber) {
+  public Showtime(Venue venue, Event event, String[][] availableSeats, String timeOfShow,
+      String auditoriumNumber) {
     this.venue = venue;
     this.event = event;
     this.availableSeats = availableSeats;
@@ -68,7 +69,7 @@ public class Showtime {
    * @return auditorium number
    */
   public String getAuditoriumNumber() {
-    return venue.getAuditorium(this.auditoriumNumber).getAuditoriumNumber();
+    return this.auditoriumNumber;
   }
 
   /**
@@ -94,6 +95,7 @@ public class Showtime {
     if (availableSeats[i][j] == null)
       availableSeats[i][j] = " ";
     else
-      System.out.println("The seat in row " + j + ", column " + i + " is already taken. Choose again.");
+      System.out
+          .println("The seat in row " + j + ", column " + i + " is already taken. Choose again.");
   }
 }
