@@ -168,21 +168,6 @@ public class DataLoader extends DataConstants {
       JSONObject auditoriumDetails = (JSONObject) auditoriumsJSON.get(i);
       auditoriums.add(getAuditoriumData(auditoriumDetails));
     }
-
-    System.out.println(name + " " + address + " " + type + " " + adultTicketPrice + " "
-        + childTicketPrice + " " + handicapTicketPrice);
-    for (int i = 0; i < auditoriums.size(); ++i) {
-      auditoriums.get(i).getSeatingLayout();
-      String[][] layout = auditoriums.get(i).getSeatingMap();
-
-      for (String[] row : layout) {
-        for (String column : row) {
-          System.out.print(column + " ");
-        }
-        System.out.println();
-      }
-
-    }
     return new Venue(name, address, type, adultTicketPrice, childTicketPrice, handicapTicketPrice,
         auditoriums);
   }
