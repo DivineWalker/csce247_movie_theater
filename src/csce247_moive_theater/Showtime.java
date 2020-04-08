@@ -69,7 +69,7 @@ public class Showtime {
    * @return auditorium number
    */
   public String getAuditoriumNumber() {
-    return this.auditoriumNumber;
+    return venue.getAuditorium(this.auditoriumNumber).getAuditoriumNumber();
   }
 
   /**
