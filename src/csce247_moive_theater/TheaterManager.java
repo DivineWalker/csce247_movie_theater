@@ -19,11 +19,11 @@ public class TheaterManager {
   ArrayList<String> reviews = new ArrayList<String>();
 
   private TheaterManager() {
-    loadJSON();
     users = new ArrayList<User>();
     events = new ArrayList<Event>();
     showtimes = new ArrayList<Showtime>();
     reviews = new ArrayList<String>();
+    loadJSON();
   }
 
   public static TheaterManager getInstance() {
@@ -158,25 +158,24 @@ public class TheaterManager {
   }
 
   public Showtime search() {
-	  int i;   
-	  System.out.println("Enter name of event you want to search");    
-	  String ne = sc.nextLine();    
-	  System.out.println("Enter name of venue you want to visit");   
-	  String nv = sc.nextLine();    
-	  for (i = 0; i < showtimes.size(); i++) {    	
-		  while (showtimes.get(i).getEvent().getName().equalsIgnoreCase(ne) && showtimes.get(i).getVenue().getName().equalsIgnoreCase(nv)) {    	    		
-			  System.out.println("Here is available showtime option:");           		
-			  System.out.println(showtimes.get(i).toString());        		
-			  searched = true;        		
-			  break;        	
-		  }       
-		  if(searched == false)        
-			  System.out.println("Sorry\nThere is NO available showtime");     
-	  }    
-	  return showtimes.get(i);    
+    int i;
+    System.out.println("Enter name of event you want to search");
+    String ne = sc.nextLine();
+    System.out.println("Enter name of venue you want to visit");
+    String nv = sc.nextLine();
+    for (i = 0; i < showtimes.size(); i++) {
+      if (showtimes.get(i).getVenue().getName().equals(nv)) {
+        if (showtimes.get(i).getEvent().getName().equals(ne)) {
+          System.out.println("Here is a showtime");
+          System.out.println(showtimes.get(i).toString());
+        }
+      }
+      return showtimes.get(i);
+    }
+    return null;
   }
-    
-  
+
+
 
   // Dealing with ticket issue under senario 1
   public void ticketS1() {
@@ -366,7 +365,7 @@ public class TheaterManager {
   /**
    * Load all the information from the JSON files into the internal Array Lists
    */
-  
+
   private void loadJSON() {
     DataLoader jsonLoader = new DataLoader();
     users = jsonLoader.loadUsers();
@@ -374,5 +373,5 @@ public class TheaterManager {
     venues = jsonLoader.loadVenues();
     showtimes = jsonLoader.loadShowtimes();
   }
-  
+
 }
