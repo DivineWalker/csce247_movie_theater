@@ -18,9 +18,10 @@ public class Showtime {
    * @param event what event is happening
    * @param auditoriumNumber which auditorium it will be playing in
    */
-  public Showtime(Venue venue, Event event, String auditoriumNumber) {
+  public Showtime(Venue venue, Event event, String auditoriumNumber, String timeOfShow) {
     this.venue = venue;
     this.event = event;
+    this.timeOfShow = timeOfShow;
     this.auditoriumNumber = auditoriumNumber;
     this.availableSeats = venue.getAuditorium(auditoriumNumber).getSeatingMap();
   }
