@@ -68,6 +68,14 @@ public class Order {
     return showtime.getAuditoriumNumber();
   }
 
+  public String getTimeOfShow() {
+    return showtime.getTimeOfShow();
+  }
+
+  public String getVenueName() {
+    return showtime.getVenue().getName();
+  }
+
   @Override
   public String toString() {
     return "Order #: " + this.orderNumber + "            " + "$" + this.amountPaid;
