@@ -95,7 +95,7 @@ public class TheaterManager {
       System.out.println("Enter size of seats at this venue");
       int s = Integer.parseInt(sc.nextLine());
       String[][] availableSeats = new String[s][s];
-      for (int j = 0; j < events.size(); i++) {
+      for (int j = 0; j < events.size(); j++) {
         System.out.println("Enter time of show\nat venue: " + venues.get(i).getName()
             + "\nfor event: " + events.get(j).getName());
         String timeOfShow = sc.nextLine();
