@@ -96,7 +96,7 @@ public class DataLoader extends DataConstants {
    */
   private static Event getEventData(JSONObject eventDetails) {
     String name = (String) eventDetails.get(EVENT_NAME);
-    int runTime = (int) eventDetails.get(EVENT_RUN_TIME);
+    int runTime = Integer.parseInt((String) eventDetails.get(EVENT_RUN_TIME));
     String stars = (String) eventDetails.get(EVENT_STARS);
     String genre = (String) eventDetails.get(EVENT_GENRE);
     String description = (String) eventDetails.get(EVENT_DESCRIPTION);

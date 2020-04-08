@@ -137,7 +137,7 @@ public class DataWriter extends DataConstants {
 
     eventDetails.put(EVENT_NAME, event.getName());
     eventDetails.put(EVENT_REVIEWS, saveEventReviews(event.getReviews()));
-    eventDetails.put(EVENT_RUN_TIME, event.getRunTime());
+    eventDetails.put(EVENT_RUN_TIME, Integer.toString(event.getRunTime()));
     eventDetails.put(EVENT_STARS, event.getStars());
     eventDetails.put(EVENT_GENRE, event.getGenre());
     eventDetails.put(EVENT_DESCRIPTION, event.getDescription());
