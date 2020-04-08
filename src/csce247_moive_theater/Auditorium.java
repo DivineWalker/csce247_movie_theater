@@ -20,13 +20,6 @@ public class Auditorium {
 
   }
 
-  //Changed method so that it will fill the seatingMap with As instead of print a blank seating map
-  public void getSeatingLayout() {
-    for (int i = 0; i < seatingMap.length; i++)
-      for (int j = 0; j < seatingMap[i].length; j++)
-        seatingMap[i][j] = "A";
-  }
-
   /**
    * 
    * @return auditorium number
