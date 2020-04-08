@@ -105,7 +105,8 @@ public class Showtime {
    */
   @Override
   public String toString() {
-    return "Venue: " + this.venue + "\nEvent: " + this.event + "\nAvailable Seats: "
+    showAvailableSeats();
+    return "Venue: " + this.venue.getName() + "\nEvent: " + this.event.getName()
         + "\nTime of Show: " + this.timeOfShow + "\nAuditorium Number: " + getAuditoriumNumber();
   }
 }

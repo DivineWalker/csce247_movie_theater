@@ -169,10 +169,11 @@ public class TheaterManager {
         if (showtimes.get(i).getEvent().getName().equals(ne)) {
           System.out.println("Here is a showtime");
           System.out.println(showtimes.get(i).toString());
+          return showtimes.get(i);
         }
       }
-      return showtimes.get(i);
     }
+    System.out.println("We couldn't find a matching event");
     return null;
   }
 
