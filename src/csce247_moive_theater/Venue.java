@@ -128,7 +128,7 @@ public class Venue {
     return auditoriums;
   }
 
-  public void initializeLayout(String[][] seatingMap) {
+  private void initializeLayout(String[][] seatingMap) {
     for (int i = 0; i < seatingMap.length; i++)
       for (int j = 0; j < seatingMap[i].length; j++)
         seatingMap[i][j] = "A";
