@@ -12,8 +12,18 @@ public class TheaterManager {
   Scanner sc = new Scanner(System.in);
   private static TheaterManager theaterManager;
 
+  public ArrayList<Venue> venues;
+  public ArrayList<User> users;
+  public ArrayList<Event> events;
+  public ArrayList<Showtime> showtimes;
+  public ArrayList<String> reviews;
+
   private TheaterManager() {
     loadJSON();
+    users = new ArrayList<User>();
+    events = new ArrayList<Event>();
+    showtimes = new ArrayList<Showtime>();
+    reviews = new ArrayList<String>();
   }
 
   public static TheaterManager getInstance() {
@@ -23,11 +33,6 @@ public class TheaterManager {
     return theaterManager;
   }
 
-  ArrayList<Venue> venues = new ArrayList<Venue>();
-  ArrayList<User> users = new ArrayList<User>();
-  ArrayList<Event> events = new ArrayList<Event>();
-  ArrayList<Showtime> showtimes = new ArrayList<Showtime>();
-  ArrayList<String> reviews = new ArrayList<String>();
   String nv;
   Showtime st;
   boolean searched;
