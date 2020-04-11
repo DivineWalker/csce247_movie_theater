@@ -40,7 +40,6 @@ public class TheaterDriver {
         eUser.createEvent();// Add play
         System.out.println("New play is updated");
         eUser.createShowtime();// Find target combination of target venue and new play
-        System.out.println("New showtime created");
     }
   }
 }

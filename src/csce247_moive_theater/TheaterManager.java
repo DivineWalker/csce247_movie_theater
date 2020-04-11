@@ -89,22 +89,28 @@ public class TheaterManager {
     /*
      * System.out.println("Enter name of auditorium"); String auditoriumNumber=sc.nextLine();
      */
-    String auditoriumNumber = "";
     System.out.println("Creating a new showtime");
+    System.out.println("Enter the venue name");
+    String venueName = sc.nextLine();
+    System.out.println("Enter the event name");
+    String eventName = sc.nextLine();
     for (int i = 0; i < venues.size(); i++) {
-      System.out.println("Enter size of seats at this venue");
-      int s = Integer.parseInt(sc.nextLine());
-      String[][] availableSeats = new String[s][s];
-      for (int j = 0; j < events.size(); j++) {
-        System.out.println("Enter time of show\nat venue: " + venues.get(i).getName()
-            + "\nfor event: " + events.get(j).getName());
-        String timeOfShow = sc.nextLine();
-        Showtime newShowtime = new Showtime(venues.get(i), events.get(j), availableSeats,
-            timeOfShow, auditoriumNumber);
-        showtimes.add(newShowtime);
+      if (venues.get(i).getName().equalsIgnoreCase(venueName)) {
+        for (int j = 0; i < events.size(); ++j) {
+          if (events.get(j).getName().equals(eventName)) {
+            System.out.println("Enter time of show");
+            String timeOfShow = sc.nextLine();
+            System.out.println("Enter the auditorium number");
+            String auditoriumNumber = sc.nextLine();
+            Showtime newShowtime =
+                new Showtime(venues.get(i), events.get(i), auditoriumNumber, timeOfShow);
+            showtimes.add(newShowtime);
+            System.out.println("New showtime created\n");
+            break;
+          }
+        }
       }
     }
-    System.out.println("New showtime created\n");
   }
 
   public User createUser() {
@@ -254,7 +260,7 @@ public class TheaterManager {
     System.out.println("Thanks\nRating submitted");
     System.out.println("Please review this event");
     String rv = sc.nextLine();
-    st.getEvent().reviews.add(rv);
+    showtime.getEvent().reviews.add(rv);
     System.out.println("Thanks\nReview submitted");
 
   }
