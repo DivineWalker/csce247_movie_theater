@@ -17,7 +17,7 @@ class AuditoriumTest {
 		Auditorium aud = new Auditorium("1", new String[5][5]);
 		assertEquals(aud.getAuditoriumNumber(), "1");
 	}
-	
+
 	/**
 	 * Test method for getSeatingMap
 	 */
