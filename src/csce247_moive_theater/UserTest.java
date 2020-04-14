@@ -1,7 +1,6 @@
 package csce247_moive_theater;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -48,10 +47,6 @@ class UserTest {
         johnSmith.getOrderHistory().get(0).getEventName(), "Frozen 2");
   }
 
-  @Test
-  void testRefundTicket() {
-    fail("Not yet implemented");
-  }
 
   @Test
   void testGetFirstName() {
