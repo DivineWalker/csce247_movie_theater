@@ -14,7 +14,7 @@ class VenueTest {
 	void testGetAuditorium() {
 		Venue vn = new Venue("USC Movie Theater", "123 Main St.", "Movie Theater", 5, 3, 5, new String[2][2], 5);
 		Auditorium ad = new Auditorium("3", new String[2][2]);
-		Assert.assertSame(ad, vn.getAuditorium("2"));
+		assertEquals(vn.getAuditorium("2").getAuditoriumNumber(), ad.getAuditoriumNumber());
 	}
 
 	@Test
@@ -60,7 +60,7 @@ class VenueTest {
 		List<Auditorium> auditoriums = new ArrayList<>();
 		for(int i = 0; i < 2; i++)
 			auditoriums.add(new Auditorium(""+(i+1), sm));
-		assertEquals(vn.getAuditoriumList(), auditoriums);
+		assertEquals(vn.getAuditoriumList().get(1).getAuditoriumNumber(), auditoriums.get(1).getAuditoriumNumber());
 		
 	}
 
