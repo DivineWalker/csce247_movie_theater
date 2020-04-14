@@ -29,7 +29,7 @@ class VenueTest {
 		Venue vn = new Venue("USC Movie Theater", "123 Main St.", "Movie Theater", 5, 3, 5, new String[2][2], 5);
 		assertEquals(vn.getName(), "USC Movie Theater");
 	}
-	
+
 	/**
 	 * Test method for getAddress
 	 */
@@ -83,10 +83,10 @@ class VenueTest {
 		String[][] sm = new String[2][2];
 		Venue vn = new Venue("USC Movie Theater", "123 Main St.", "Movie Theater", 5, 3, 5, sm, 2);
 		List<Auditorium> auditoriums = new ArrayList<>();
-		for(int i = 0; i < 2; i++)
-			auditoriums.add(new Auditorium(""+(i+1), sm));
+		for (int i = 0; i < 2; i++)
+			auditoriums.add(new Auditorium("" + (i + 1), sm));
 		assertEquals(vn.getAuditoriumList().get(1).getAuditoriumNumber(), auditoriums.get(1).getAuditoriumNumber());
-		
+
 	}
 
 }
