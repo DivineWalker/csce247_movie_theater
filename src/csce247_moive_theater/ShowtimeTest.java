@@ -1,11 +1,11 @@
 /**
- * 
+ * @author Divine
  */
 package csce247_moive_theater;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+
 
 /**
  * @author divinew
@@ -14,36 +14,42 @@ import org.junit.jupiter.api.Test;
 class ShowtimeTest {
 
 	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#getVenue()}.
+	 * Test method for getVenue
 	 */
 	@Test
 	void testGetVenue() {
-		fail("Not yet implemented");
+		Venue vn = new Venue("USC Movie Theater", "123 Main St.", "Movie Theater", 5, 3, 5, new String[2][2], 5);
+		Event ev = new Event("Frozen", 105, "5", "comedy", "Frozen movie", "Movie", "5");
+		Showtime sh = new Showtime(vn, ev, "2", "12:00");
+		assertEquals(sh.getVenue(), vn);
 	}
 
 	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#getEvent()}.
+	 * Test method for getEvent
 	 */
 	@Test
 	void testGetEvent() {
-		fail("Not yet implemented");
+		Venue vn = new Venue("USC Movie Theater", "123 Main St.", "Movie Theater", 5, 3, 5, new String[2][2], 5);
+		Event ev = new Event("Frozen", 105, "5", "comedy", "Frozen movie", "Movie", "5");
+		Showtime sh = new Showtime(vn, ev, "2", "12:00");
+		assertEquals(sh.getEvent(), ev);
 	}
 
 	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#getAvailableSeats()}.
+	 * Test method for getAvailableSeats
 	 */
 	@Test
 	void testGetAvailableSeats() {
 		Venue vn = new Venue("USC Movie Theater", "123 Main St.", "Movie Theater", 5, 3, 5, new String[2][2], 5);
 		Event ev = new Event("Frozen", 105, "5", "comedy", "Frozen movie", "Movie", "5");
 		Showtime sh = new Showtime(vn, ev, "2", "12:00");
-		assertEquals(sh.getAvailableSeats(),"IDK");
+		assertEquals(sh.getAvailableSeats(), vn.getAuditorium("2").getSeatingMap());
 		
 		
 	}
 
 	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#getTimeOfShow()}.
+	 * Test method for getTimeOfShow
 	 */
 	@Test
 	void testGetTimeOfShow() {
@@ -54,7 +60,7 @@ class ShowtimeTest {
 	}
 
 	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#getAuditoriumNumber()}.
+	 * Test method for getAuditoriumNumber
 	 */
 	@Test
 	void testGetAuditoriumNumber() {
@@ -65,23 +71,19 @@ class ShowtimeTest {
 	}
 
 	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#showAvailableSeats()}.
-	 */
-	@Test
-	void testShowAvailableSeats() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#takeSeat(int, int)}.
+	 * Test method for TakeSeat
 	 */
 	@Test
 	void testTakeSeat() {
-		fail("Not yet implemented");
+		Venue vn = new Venue("USC Movie Theater", "123 Main St.", "Movie Theater", 5, 3, 5, new String[2][2], 5);
+		Event ev = new Event("Frozen", 105, "5", "comedy", "Frozen movie", "Movie", "5");
+		Showtime sh = new Showtime(vn, ev, "2", "12:00");
+		sh.takeSeat(0,0);
+		assertEquals(sh.getAvailableSeats()[0][0], " ");
 	}
 
 	/**
-	 * Test method for {@link csce247_moive_theater.Showtime#toString()}.
+	 * Test method for toString
 	 */
 	@Test
 	void testToString() {
