@@ -72,23 +72,6 @@ class DataLoaderTest {
   }
 
   @Test
-  void testLoadRegisteredUser() {
-    DataLoader loader = new DataLoader();
-
-    User newUser = new User("John", "Smith", "abc123@email.com", "123-456-7890");
-    User registeredUser = new RegisteredUser("Jane", "Doe", "jdoe@gmail.com", "555-555-5555",
-        "05/05/1962", "556 Wayland St", "jdoe56", "12345", false);
-
-    ArrayList<User> users = new ArrayList<User>();
-
-    users.add(newUser);
-    users.add(registeredUser);
-
-    ArrayList<User> usersFromJSON = loader.loadUsers();
-    assertEquals(usersFromJSON.get(1).getType(), "registered");
-  }
-
-  @Test
   void testLoadEvents() {
     Event frozen = new Event("Frozen 2", 103, "Elsa", "Family",
         "Elsa the Snow Queen has an extraordinary gift -- the power to create ice and snow. But no matter how happy she is to be surrounded by the people of Arendelle, Elsa finds herself strangely unsettled. After hearing a mysterious voice call out to her, Elsa travels to the enchanted forests and dark seas beyond her kingdom -- an adventure that soon turns into a journey of self-discovery.",
